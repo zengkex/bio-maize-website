@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>bioinformatic</title>
+    <link rel="stylesheet" href="bio.css">
+  </head>
+  <body>
+    <header><big><h1 style="text-align: center;"> Maize</h1></big></header>
+
+    <div id="window-full">
+      <!-- the top part of window -->
+
+      <div>
+        <div id="nav">
+          <ul>
+            <li id="date"></li>
+            <li><a href="../main.html",class="nav-item">Introduction</a></li>
+            <li><a href="add.html",class="nav-item">Add Data</a></li>
+            <li><a href="browse.php",class="nav-item">Browse</a></li>
+            <li><a href="search.html",class="nav-item">Search</a></li>
+            <li><a href="expression.html",class="nav-item">Expression</a></li>
+            <li><a href="download.html",class="nav-item">Download</a></li>
+            <li><a href="documentation.html",class="nav-item">Documentation</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- TODO: the left part of window -->
+      <div id="window-left">
+        <p style="text-align: center;">Maize's website</p>
+      </div>
+  
+      <!-- TODO: the right part of window -->
+      <div id="window-right">
+        <div id='index-content'>
+          <p class='title-head'>SQL</p>
+          <ul><b><li>Connect SQL</li></b></ul>
+          <p style="font-size: 10px;padding-left: 25px;">1.$conn = mysqli_connect("localhost","s2022E8006285020","ucas285020","s2022E8006285020");</p>
+          <ul>
+            <b><h1><li>Local to Server</li></h1></b>
+          </ul>
+          <p style="font-size: 10px;padding-left: 25px;">1.export local data in phpmyadmin</p>
+          <p style="font-size: 10px;padding-left: 25px;">2.use s2022E8006285020</p>
+          <p style="font-size: 10px;padding-left: 25px;">3.mysql -u s2022E8006285020 -p s2022E8006285020 < gene.sql</p>
+          <p style="font-size: 10px;padding-left: 25px;">4.mysql -u s2022E8006285020 -p s2022E8006285020 < expression.sql</p>
+          <p style="font-size: 10px;padding-left: 25px;">5.import sucessfully</p>
+        
+
+          <p class='title-head'>Data</p>
+          <ul><b><li>Add data</li></b></ul>
+          <p style="font-size: 10px;padding-left: 25px;">$sql= "INSERT INTO gene (Id,Family,Category,Classification,Sequence) VALUES ('$id', '$family','$category','$classfication','$sequence')";</p>
+          <p style="font-size: 10px;padding-left: 25px;"></p>
+          <ul><b><li>Upload data</li></b></ul>
+          <p style="font-size: 10px;padding-left: 25px;">$sql = "UPDATE gene SET Family='$family', Category='$category',Classification='$classification',Sequence='$sequence' WHERE Id='$id'";</p>
+          <ul><b><li>Delete data</li></b></ul>
+          <p style="font-size: 10px;padding-left: 25px;"> $sql ="DELETE FROM gene WHERE id = $id";</p>
+          
+
+          <p class='title-head'>Search</p>
+          <ul><b><li>Search data</li></b></ul>
+          <p style="font-size: 10px;padding-left: 25px;">$sql= "SELECT * FROM gene WHERE id='$id'";</p>
+          <ul><b><li>Blastn</li></b></ul>
+          <p style="font-size: 10px;padding-left: 25px;">exec("makeblastdb -in gene.fa -dbtype nucl -out gene");</p>
+          <p style="font-size: 10px;padding-left: 25px;">$output = shell_exec("blastn -db gene -query sequence.fa");</p>
+          
+          <p class='title-head'>Expression</p>
+          <ul><b><li>Browse gene Expression</li></b></ul>
+          <p style="font-size: 10px;padding-left: 25px;"> $sql= "SELECT * FROM expression WHERE id='$id'";</p>
+          <ul><b><li>Barplot</li></b></ul>   
+          <p style="font-size: 10px;padding-left: 25px;">1.Write data.txt dynamically according to the input gene name</p>
+          <p style="font-size: 10px;padding-left: 25px;">2.R Drawing</p>
+          <p style="font-size: 10px;padding-left: 25px;">plot<-ggplot(df,aes(id,log2FoldChange,fill=log2FoldChange>=0))+
+            geom_bar(stat = "identity",position="identity")+
+            scale_fill_manual(values=c("Black","Grey"))</p>
+          
+          <p class='title-head'>Download</p>
+          <ul><b><li>How to download</li></b></ul>
+          <p style="font-size: 10px;padding-left: 25px;">header('Content-Disposition: attachment; filename="download.csv"');</p>
+
+        </div>
+      </div>
+      <footer >Email:zengkexin22@mails.ucas.ac.cn</footer>
+  </body>
+</html>
